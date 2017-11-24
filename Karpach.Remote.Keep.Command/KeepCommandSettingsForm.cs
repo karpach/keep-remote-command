@@ -15,8 +15,10 @@ namespace Karpach.Remote.Keep.Command
         private Label _lbDelay;
         private Label _lbListId;
         private TextBox _txtListId;
-        private Label _lbChromeProfileFolder;
-        private TextBox _txtChromeProfileFolder;
+        private Label _lbGoogleUserName;
+        private TextBox _txtGmailEmail;
+        private Label _lbGmailPassword;
+        private TextBox _txtGmailPassword;
         private TextBox _txtDelay;
 
         public SampleCommandSettingsForm(KeepCommandSettings settings)
@@ -25,6 +27,9 @@ namespace Karpach.Remote.Keep.Command
             Settings = settings;
             _txtCommandName.Text = Settings.CommandName;
             _txtDelay.Text = Settings.ExecutionDelay?.ToString() ?? "0";
+            _txtGmailEmail.Text = Settings.GoogleUserName;
+            _txtGmailPassword.Text = Settings.GooglePassword;
+            _txtListId.Text = Settings.ListId;
         }                
 
         private void InitializeComponent()
@@ -37,14 +42,16 @@ namespace Karpach.Remote.Keep.Command
             this._txtDelay = new System.Windows.Forms.TextBox();
             this._lbListId = new System.Windows.Forms.Label();
             this._txtListId = new System.Windows.Forms.TextBox();
-            this._lbChromeProfileFolder = new System.Windows.Forms.Label();
-            this._txtChromeProfileFolder = new System.Windows.Forms.TextBox();
+            this._lbGoogleUserName = new System.Windows.Forms.Label();
+            this._txtGmailEmail = new System.Windows.Forms.TextBox();
+            this._lbGmailPassword = new System.Windows.Forms.Label();
+            this._txtGmailPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _btnOk
             // 
             this._btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this._btnOk.Location = new System.Drawing.Point(133, 176);
+            this._btnOk.Location = new System.Drawing.Point(133, 215);
             this._btnOk.Name = "_btnOk";
             this._btnOk.Size = new System.Drawing.Size(75, 23);
             this._btnOk.TabIndex = 4;
@@ -55,7 +62,7 @@ namespace Karpach.Remote.Keep.Command
             // _btnCancel
             // 
             this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._btnCancel.Location = new System.Drawing.Point(214, 176);
+            this._btnCancel.Location = new System.Drawing.Point(214, 215);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
             this._btnCancel.TabIndex = 5;
@@ -98,7 +105,7 @@ namespace Karpach.Remote.Keep.Command
             // _lbListId
             // 
             this._lbListId.AutoSize = true;
-            this._lbListId.Location = new System.Drawing.Point(70, 137);
+            this._lbListId.Location = new System.Drawing.Point(70, 176);
             this._lbListId.Name = "_lbListId";
             this._lbListId.Size = new System.Drawing.Size(38, 13);
             this._lbListId.TabIndex = 0;
@@ -106,37 +113,55 @@ namespace Karpach.Remote.Keep.Command
             // 
             // _txtListId
             // 
-            this._txtListId.Location = new System.Drawing.Point(116, 134);
+            this._txtListId.Location = new System.Drawing.Point(116, 173);
             this._txtListId.Name = "_txtListId";
             this._txtListId.Size = new System.Drawing.Size(271, 20);
             this._txtListId.TabIndex = 3;
             // 
-            // _lbChromeProfileFolder
+            // _lbGoogleUserName
             // 
-            this._lbChromeProfileFolder.AutoSize = true;
-            this._lbChromeProfileFolder.Location = new System.Drawing.Point(7, 98);
-            this._lbChromeProfileFolder.Name = "_lbChromeProfileFolder";
-            this._lbChromeProfileFolder.Size = new System.Drawing.Size(106, 13);
-            this._lbChromeProfileFolder.TabIndex = 0;
-            this._lbChromeProfileFolder.Text = "Chrome profile folder:";
+            this._lbGoogleUserName.AutoSize = true;
+            this._lbGoogleUserName.Location = new System.Drawing.Point(46, 98);
+            this._lbGoogleUserName.Name = "_lbGoogleUserName";
+            this._lbGoogleUserName.Size = new System.Drawing.Size(64, 13);
+            this._lbGoogleUserName.TabIndex = 0;
+            this._lbGoogleUserName.Text = "Gmail Email:";
             // 
-            // _txtChromeProfileFolder
+            // _txtGmailEmail
             // 
-            this._txtChromeProfileFolder.Location = new System.Drawing.Point(116, 95);
-            this._txtChromeProfileFolder.Name = "_txtChromeProfileFolder";
-            this._txtChromeProfileFolder.Size = new System.Drawing.Size(271, 20);
-            this._txtChromeProfileFolder.TabIndex = 2;
+            this._txtGmailEmail.Location = new System.Drawing.Point(116, 95);
+            this._txtGmailEmail.Name = "_txtGmailEmail";
+            this._txtGmailEmail.Size = new System.Drawing.Size(271, 20);
+            this._txtGmailEmail.TabIndex = 2;
+            // 
+            // _lbGmailPassword
+            // 
+            this._lbGmailPassword.AutoSize = true;
+            this._lbGmailPassword.Location = new System.Drawing.Point(25, 134);
+            this._lbGmailPassword.Name = "_lbGmailPassword";
+            this._lbGmailPassword.Size = new System.Drawing.Size(85, 13);
+            this._lbGmailPassword.TabIndex = 0;
+            this._lbGmailPassword.Text = "Gmail Password:";
+            // 
+            // _txtGmailPassword
+            // 
+            this._txtGmailPassword.Location = new System.Drawing.Point(116, 131);
+            this._txtGmailPassword.Name = "_txtGmailPassword";
+            this._txtGmailPassword.Size = new System.Drawing.Size(271, 20);
+            this._txtGmailPassword.TabIndex = 2;
             // 
             // SampleCommandSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 217);
+            this.ClientSize = new System.Drawing.Size(397, 246);
             this.Controls.Add(this._txtListId);
-            this.Controls.Add(this._txtChromeProfileFolder);
+            this.Controls.Add(this._txtGmailPassword);
+            this.Controls.Add(this._txtGmailEmail);
             this.Controls.Add(this._txtDelay);
             this.Controls.Add(this._lbListId);
-            this.Controls.Add(this._lbChromeProfileFolder);
+            this.Controls.Add(this._lbGmailPassword);
+            this.Controls.Add(this._lbGoogleUserName);
             this.Controls.Add(this._txtCommandName);
             this.Controls.Add(this._lbDelay);
             this.Controls.Add(this._lbCommandName);
@@ -157,7 +182,9 @@ namespace Karpach.Remote.Keep.Command
             int n;
             Settings.ExecutionDelay = int.TryParse(_txtDelay.Text, out n) ? n : 0;
             Settings.ListId = _txtListId.Text;
-            Settings.ChromeProfileFolder = _txtChromeProfileFolder.Text;
+            Settings.GoogleUserName = _txtGmailEmail.Text;
+            Settings.GooglePassword = _txtGmailPassword.Text;
+
             Close();
         }
 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Karpach.Remote.Keep.Command.Tests")]
+[assembly: AssemblyTitle("Karpach.Remote.Keep.Command.Runner")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Karpach.Remote.Keep.Command.Tests")]
+[assembly: AssemblyProduct("Karpach.Remote.Keep.Command.Runner")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e362d452-26b4-487a-a65c-5846eb57dffb")]
+[assembly: Guid("4b5fca92-be5d-463f-a878-1e4ac4e2b6e3")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command", "Karpach.Remote.Keep.Command\Karpach.Remote.Keep.Command.csproj", "{E2F6EFE1-51F6-4F9E-A548-079DDC6352B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command.Tests", "Karpach.Remote.Keep.Command.Tests\Karpach.Remote.Keep.Command.Tests.csproj", "{E362D452-26B4-487A-A65C-5846EB57DFFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command.Runner", "Karpach.Remote.Keep.Command.Runner\Karpach.Remote.Keep.Command.Runner.csproj", "{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E2F6EFE1-51F6-4F9E-A548-079DDC6352B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2F6EFE1-51F6-4F9E-A548-079DDC6352B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2F6EFE1-51F6-4F9E-A548-079DDC6352B2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E362D452-26B4-487A-A65C-5846EB57DFFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E362D452-26B4-487A-A65C-5846EB57DFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E362D452-26B4-487A-A65C-5846EB57DFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E362D452-26B4-487A-A65C-5846EB57DFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
