@@ -19,6 +19,7 @@ namespace Karpach.Remote.Keep.Command
         private TextBox _txtGmailEmail;
         private Label _lbGmailPassword;
         private TextBox _txtGmailPassword;
+        private CheckBox _chkHeadless;
         private TextBox _txtDelay;
 
         public SampleCommandSettingsForm(KeepCommandSettings settings)
@@ -30,10 +31,12 @@ namespace Karpach.Remote.Keep.Command
             _txtGmailEmail.Text = Settings.GoogleUserName;
             _txtGmailPassword.Text = Settings.GooglePassword;
             _txtListId.Text = Settings.ListId;
+            _chkHeadless.Checked = Settings.Headless;
         }                
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SampleCommandSettingsForm));
             this._btnOk = new System.Windows.Forms.Button();
             this._btnCancel = new System.Windows.Forms.Button();
             this._lbCommandName = new System.Windows.Forms.Label();
@@ -46,12 +49,13 @@ namespace Karpach.Remote.Keep.Command
             this._txtGmailEmail = new System.Windows.Forms.TextBox();
             this._lbGmailPassword = new System.Windows.Forms.Label();
             this._txtGmailPassword = new System.Windows.Forms.TextBox();
+            this._chkHeadless = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // _btnOk
             // 
             this._btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this._btnOk.Location = new System.Drawing.Point(133, 215);
+            this._btnOk.Location = new System.Drawing.Point(133, 247);
             this._btnOk.Name = "_btnOk";
             this._btnOk.Size = new System.Drawing.Size(75, 23);
             this._btnOk.TabIndex = 4;
@@ -62,7 +66,7 @@ namespace Karpach.Remote.Keep.Command
             // _btnCancel
             // 
             this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._btnCancel.Location = new System.Drawing.Point(214, 215);
+            this._btnCancel.Location = new System.Drawing.Point(214, 247);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
             this._btnCancel.TabIndex = 5;
@@ -150,11 +154,23 @@ namespace Karpach.Remote.Keep.Command
             this._txtGmailPassword.Size = new System.Drawing.Size(271, 20);
             this._txtGmailPassword.TabIndex = 2;
             // 
+            // _chkHeadless
+            // 
+            this._chkHeadless.AutoSize = true;
+            this._chkHeadless.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._chkHeadless.Location = new System.Drawing.Point(25, 211);
+            this._chkHeadless.Name = "_chkHeadless";
+            this._chkHeadless.Size = new System.Drawing.Size(103, 17);
+            this._chkHeadless.TabIndex = 6;
+            this._chkHeadless.Text = "Headless Mode:";
+            this._chkHeadless.UseVisualStyleBackColor = true;
+            // 
             // SampleCommandSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 246);
+            this.ClientSize = new System.Drawing.Size(397, 292);
+            this.Controls.Add(this._chkHeadless);
             this.Controls.Add(this._txtListId);
             this.Controls.Add(this._txtGmailPassword);
             this.Controls.Add(this._txtGmailEmail);
@@ -168,6 +184,7 @@ namespace Karpach.Remote.Keep.Command
             this.Controls.Add(this._btnCancel);
             this.Controls.Add(this._btnOk);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SampleCommandSettingsForm";
             this.Text = "Sample Command Settings";
@@ -184,7 +201,7 @@ namespace Karpach.Remote.Keep.Command
             Settings.ListId = _txtListId.Text;
             Settings.GoogleUserName = _txtGmailEmail.Text;
             Settings.GooglePassword = _txtGmailPassword.Text;
-
+            Settings.Headless = _chkHeadless.Checked;
             Close();
         }
 

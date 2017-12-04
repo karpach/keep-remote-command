@@ -9,5 +9,6 @@ namespace Karpach.Remote.Keep.Command
         public string ListId { get; set; }        
         public string GoogleUserName { get; set; }
         public string GooglePassword { get; set; }
+        public bool Headless { get; set; }
     }
 }   
