@@ -83,23 +83,25 @@ namespace Karpach.Remote.Keep.Command
             try
             {
                 string url = $"https://keep.google.com/#LIST/{((KeepCommandSettings) Settings).ListId}";
+                WebDriverWait wait;
+                ReadOnlyCollection<IWebElement> elements;
                 if (!string.Equals(_chromeDriver.Value.Url, url))
                 {
                     _chromeDriver.Value.Navigate().GoToUrl(url);
-                }
-                WebDriverWait wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
-                ReadOnlyCollection<IWebElement> elements = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector("#initialView #identifierId")));
-                if (elements.Count == 1)
-                {
-                    if (!Login(elements[0]))
-                    {
-                        Logger.Log(LogLevel.Error, "Unable to login:\n" + _chromeDriver.Value.PageSource + "\n\n");
-                        return;
-                    }
                     wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
-                    wait.Until(ExpectedConditions.UrlContains("https://keep.google.com/"));                    
-                    _chromeDriver.Value.Navigate().GoToUrl(url);
-                }
+                    elements = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector("#initialView #identifierId")));
+                    if (elements.Count == 1)
+                    {
+                        if (!Login(elements[0]))
+                        {
+                            Logger.Log(LogLevel.Error, "Unable to login:\n" + _chromeDriver.Value.PageSource + "\n\n");
+                            return;
+                        }
+                        wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
+                        wait.Until(ExpectedConditions.UrlContains("https://keep.google.com/"));
+                        _chromeDriver.Value.Navigate().GoToUrl(url);
+                    }
+                }                
                 wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
                 elements = wait.Until(VisibleElementsByLocatedBy(By.XPath("//div[@aria-label='Remind me']"),1));                
                 if (elements.Count != 1)
@@ -146,6 +148,16 @@ namespace Karpach.Remote.Keep.Command
         public override IRemoteCommand Create(Guid id)
         {
             return new KeepCommand(id);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            if (_chromeDriver.IsValueCreated)
+            {                
+                _chromeDriver.Value.Close();
+                _chromeDriver.Value.Dispose();
+            }            
         }
 
         private Func<IWebDriver, ReadOnlyCollection<IWebElement>> VisibleElementsByLocatedBy(By locator, int count)
