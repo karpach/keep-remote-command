@@ -82,7 +82,7 @@ namespace Karpach.Remote.Keep.Command
             }            
             try
             {
-                string url = $"https://keep.google.com/#LIST/{((KeepCommandSettings) Settings).ListId}";
+                string url = "https://photos.google.com/login";
                 WebDriverWait wait;
                 ReadOnlyCollection<IWebElement> elements;
                 if (!string.Equals(_chromeDriver.Value.Url, url))
@@ -98,11 +98,12 @@ namespace Karpach.Remote.Keep.Command
                             return;
                         }
                         wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
-                        wait.Until(ExpectedConditions.UrlContains("https://keep.google.com/"));
+                        wait.Until(ExpectedConditions.UrlContains("https://photos.google.com"));
+                        url = $"https://keep.google.com/#LIST/{((KeepCommandSettings)Settings).ListId}";
                         _chromeDriver.Value.Navigate().GoToUrl(url);
                     }
-                }                
-                wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
+                }                           
+                wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));                
                 elements = wait.Until(VisibleElementsByLocatedBy(By.XPath("//div[@aria-label='Remind me']"),1));                
                 if (elements.Count != 1)
                 {
