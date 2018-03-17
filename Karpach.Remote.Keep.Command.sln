@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command", "Karpach.Remote.Keep.Command\Karpach.Remote.Keep.Command.csproj", "{E2F6EFE1-51F6-4F9E-A548-079DDC6352B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command.Runner", "Karpach.Remote.Keep.Command.Runner\Karpach.Remote.Keep.Command.Runner.csproj", "{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command.Tests", "Karpach.Remote.Keep.Command.Tests\Karpach.Remote.Keep.Command.Tests.csproj", "{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B5FCA92-BE5D-463F-A878-1E4AC4E2B6E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {736C96AB-D22C-4A36-A7C2-C027D7700F07}
 	EndGlobalSection
 EndGlobal

@@ -10,5 +10,6 @@ namespace Karpach.Remote.Keep.Command
         public string GoogleUserName { get; set; }
         public string GooglePassword { get; set; }
         public bool Headless { get; set; }
+        public string ChromeProfileFolder { get; set; }
     }
 }   

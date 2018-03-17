@@ -9,6 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Karpach.Remote.Commands.Base;
 using Karpach.Remote.Commands.Interfaces;
+using Karpach.Remote.Keep.Command.Helpers;
 using NLog;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -41,6 +42,12 @@ namespace Karpach.Remote.Keep.Command
                 {
                     options.AddArguments("--headless");
                     options.AddArguments("--disable-gpu");
+                }
+
+                string chromeProfileFolder = ((KeepCommandSettings) Settings).ChromeProfileFolder.NormalizeChromeProfileFolder();
+                if (!string.IsNullOrEmpty(chromeProfileFolder))
+                {
+                    options.AddArguments($"--user-data-dir={chromeProfileFolder}");
                 }                
                 return new ChromeDriver(driverService, options);
             });
@@ -82,33 +89,41 @@ namespace Karpach.Remote.Keep.Command
             }            
             try
             {
-                string url = "https://photos.google.com/login";
-                WebDriverWait wait;
-                ReadOnlyCollection<IWebElement> elements;
-                if (!string.Equals(_chromeDriver.Value.Url, url))
-                {
-                    _chromeDriver.Value.Navigate().GoToUrl(url);
-                    wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
-                    elements = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector("#initialView #identifierId")));
-                    if (elements.Count == 1)
-                    {
-                        if (!Login(elements[0]))
+                string keepUrl = $"https://keep.google.com/#LIST/{((KeepCommandSettings)Settings).ListId}";
+                if (!string.Equals(_chromeDriver.Value.Url, keepUrl, StringComparison.InvariantCultureIgnoreCase))
+                {                
+                    string photosUrl = "https://photos.google.com";
+                    WebDriverWait wait;
+                    ReadOnlyCollection<IWebElement> elements;
+                    _chromeDriver.Value.Navigate().GoToUrl($"{photosUrl}/login");
+                    if (!_chromeDriver.Value.Url.Contains(photosUrl))
+                    {                    
+                        wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
+                        elements = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.CssSelector("#initialView #identifierId")));
+                        if (elements.Count == 1)
                         {
-                            Logger.Log(LogLevel.Error, "Unable to login:\n" + _chromeDriver.Value.PageSource + "\n\n");
+                            if (!Login(elements[0]))
+                            {
+                                Logger.Log(LogLevel.Error, "Unable to login:\n" + _chromeDriver.Value.PageSource + "\n\n");
+                                return;
+                            }
+                            wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout * 5));
+                            wait.Until(ExpectedConditions.UrlContains(photosUrl));                        
+                        }
+                        else
+                        {
+                            Logger.Log(LogLevel.Error, "Unable to load login page:\n" + _chromeDriver.Value.PageSource + "\n\n");
                             return;
                         }
-                        wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));
-                        wait.Until(ExpectedConditions.UrlContains("https://photos.google.com"));
-                        url = $"https://keep.google.com/#LIST/{((KeepCommandSettings)Settings).ListId}";
-                        _chromeDriver.Value.Navigate().GoToUrl(url);
+                    }                
+                    _chromeDriver.Value.Navigate().GoToUrl(keepUrl);
+                    wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));                
+                    elements = wait.Until(VisibleElementsByLocatedBy(By.XPath("//div[@aria-label='Remind me']"),1));                
+                    if (elements.Count != 1)
+                    {
+                        Logger.Log(LogLevel.Error, "Unable to load keep page:\n" + _chromeDriver.Value.PageSource + "\n\n");
+                        return;
                     }
-                }                           
-                wait = new WebDriverWait(_chromeDriver.Value, TimeSpan.FromSeconds(KeepLoadTimeout));                
-                elements = wait.Until(VisibleElementsByLocatedBy(By.XPath("//div[@aria-label='Remind me']"),1));                
-                if (elements.Count != 1)
-                {
-                    Logger.Log(LogLevel.Error, "Unable to load keep page:\n" + _chromeDriver.Value.PageSource + "\n\n");
-                    return;
                 }
                 if (parameters != null && parameters.Length == 1)
                 {
