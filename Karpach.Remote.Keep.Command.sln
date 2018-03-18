@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karpach.Remote.Keep.Command.Tests", "Karpach.Remote.Keep.Command.Tests\Karpach.Remote.Keep.Command.Tests.csproj", "{AF8DFD8A-056D-4222-90AE-05EBD6FB10E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64F9B459-1EF5-4D1F-87D1-0CA5950EB596}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
