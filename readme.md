@@ -1,4 +1,5 @@
 # Google Keep Command for Remote Controller
+This is a plugin for https://github.com/karpach/remote-controller.
 The command gives an ability to add items to the specified Google Keep list.
 
 ![Settings](Screenshots/Settings.png)
