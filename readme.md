@@ -18,3 +18,5 @@ Example:
 https://keep.google.com/u/1/#LIST/15660dde079.b79ba1bae1031212
 
 List Id = 15660dde079.b79ba1bae1031212
+
+[![Build status](https://ci.appveyor.com/api/projects/status/sok3pagy8i8eolc2?svg=true)](https://ci.appveyor.com/project/karpach/keep-remote-command)
