@@ -162,6 +162,7 @@ namespace Karpach.Remote.Keep.Command
             // 
             this._txtGmailPassword.Location = new System.Drawing.Point(186, 131);
             this._txtGmailPassword.Name = "_txtGmailPassword";
+            this._txtGmailPassword.PasswordChar = '*';
             this._txtGmailPassword.Size = new System.Drawing.Size(271, 20);
             this._txtGmailPassword.TabIndex = 3;
             // 
