@@ -1,16 +1,16 @@
 # Google Keep Command for Remote Controller
-This is a plugin for https://github.com/karpach/remote-controller.
+This repository is a plugin for https://github.com/karpach/remote-controller.
 The command gives an ability to add items to the specified Google Keep list.
 
 ![Settings](Screenshots/Settings.png)
 
-Since Google Keep does not provide any public API, the implementation uses Selenium wich Chrome webdriver.
+I used https://github.com/kiwiz/gkeepapi as an inspiration for accessing Google Keep unofficial REST API.
 
 Command Name - a name of the command, gives you an ability to control different Google keep lists.
 
 Execution delay - a delay before command starts its execution.
 
-Gmail Email and Gmail Password are used for Google Keep authorization. Alternatively, you can specify Chrome Profile Folder and manually login to Google Keep in that Chrome Profile.
+Google Keep Command uses Gmail Email and Gmail Password for Google Keep authorization.
 
 List Id is the ending part of URL when you click on the Google keep list.
 

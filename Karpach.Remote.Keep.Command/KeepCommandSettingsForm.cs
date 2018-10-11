@@ -19,9 +19,6 @@ namespace Karpach.Remote.Keep.Command
         private TextBox _txtGmailEmail;
         private Label _lbGmailPassword;
         private TextBox _txtGmailPassword;
-        private CheckBox _chkHeadless;
-        private Label _lbChromeProfileFolder;
-        private TextBox _txtChromeProfileFolder;
         private ToolTip _ttChromeProfileFolder;
         private System.ComponentModel.IContainer components;
         private NotifyIcon notifyIcon1;
@@ -35,9 +32,7 @@ namespace Karpach.Remote.Keep.Command
             _txtDelay.Text = Settings.ExecutionDelay?.ToString() ?? "0";
             _txtGmailEmail.Text = Settings.GoogleUserName;
             _txtGmailPassword.Text = Settings.GooglePassword;
-            _txtListId.Text = Settings.ListId;
-            _chkHeadless.Checked = Settings.Headless;
-            _txtChromeProfileFolder.Text = Settings.ChromeProfileFolder;
+            _txtListId.Text = Settings.ListId;            
         }                
 
         private void InitializeComponent()
@@ -56,9 +51,6 @@ namespace Karpach.Remote.Keep.Command
             this._txtGmailEmail = new System.Windows.Forms.TextBox();
             this._lbGmailPassword = new System.Windows.Forms.Label();
             this._txtGmailPassword = new System.Windows.Forms.TextBox();
-            this._chkHeadless = new System.Windows.Forms.CheckBox();
-            this._lbChromeProfileFolder = new System.Windows.Forms.Label();
-            this._txtChromeProfileFolder = new System.Windows.Forms.TextBox();
             this._ttChromeProfileFolder = new System.Windows.Forms.ToolTip(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
@@ -66,7 +58,7 @@ namespace Karpach.Remote.Keep.Command
             // _btnOk
             // 
             this._btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this._btnOk.Location = new System.Drawing.Point(167, 286);
+            this._btnOk.Location = new System.Drawing.Point(167, 215);
             this._btnOk.Name = "_btnOk";
             this._btnOk.Size = new System.Drawing.Size(75, 23);
             this._btnOk.TabIndex = 7;
@@ -77,7 +69,7 @@ namespace Karpach.Remote.Keep.Command
             // _btnCancel
             // 
             this._btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this._btnCancel.Location = new System.Drawing.Point(248, 286);
+            this._btnCancel.Location = new System.Drawing.Point(248, 215);
             this._btnCancel.Name = "_btnCancel";
             this._btnCancel.Size = new System.Drawing.Size(75, 23);
             this._btnCancel.TabIndex = 8;
@@ -166,34 +158,6 @@ namespace Karpach.Remote.Keep.Command
             this._txtGmailPassword.Size = new System.Drawing.Size(271, 20);
             this._txtGmailPassword.TabIndex = 3;
             // 
-            // _chkHeadless
-            // 
-            this._chkHeadless.AutoSize = true;
-            this._chkHeadless.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._chkHeadless.Location = new System.Drawing.Point(15, 249);
-            this._chkHeadless.Name = "_chkHeadless";
-            this._chkHeadless.Size = new System.Drawing.Size(174, 17);
-            this._chkHeadless.TabIndex = 6;
-            this._chkHeadless.Text = "Headless Mode (experimental) :";
-            this._chkHeadless.UseVisualStyleBackColor = true;
-            // 
-            // _lbChromeProfileFolder
-            // 
-            this._lbChromeProfileFolder.AutoSize = true;
-            this._lbChromeProfileFolder.Location = new System.Drawing.Point(17, 213);
-            this._lbChromeProfileFolder.Name = "_lbChromeProfileFolder";
-            this._lbChromeProfileFolder.Size = new System.Drawing.Size(152, 13);
-            this._lbChromeProfileFolder.TabIndex = 0;
-            this._lbChromeProfileFolder.Text = "Optional Chrome Profile Folder:";
-            // 
-            // _txtChromeProfileFolder
-            // 
-            this._txtChromeProfileFolder.Location = new System.Drawing.Point(186, 210);
-            this._txtChromeProfileFolder.Name = "_txtChromeProfileFolder";
-            this._txtChromeProfileFolder.Size = new System.Drawing.Size(271, 20);
-            this._txtChromeProfileFolder.TabIndex = 5;
-            this._ttChromeProfileFolder.SetToolTip(this._txtChromeProfileFolder, "C:/Users/username/AppData/Local/Google/Chrome/User Data/Profile Test/");
-            // 
             // _ttChromeProfileFolder
             // 
             this._ttChromeProfileFolder.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -208,13 +172,10 @@ namespace Karpach.Remote.Keep.Command
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 326);
-            this.Controls.Add(this._chkHeadless);
-            this.Controls.Add(this._txtChromeProfileFolder);
+            this.ClientSize = new System.Drawing.Size(480, 261);
             this.Controls.Add(this._txtListId);
             this.Controls.Add(this._txtGmailPassword);
             this.Controls.Add(this._txtGmailEmail);
-            this.Controls.Add(this._lbChromeProfileFolder);
             this.Controls.Add(this._txtDelay);
             this.Controls.Add(this._lbListId);
             this.Controls.Add(this._lbGmailPassword);
@@ -241,9 +202,7 @@ namespace Karpach.Remote.Keep.Command
             Settings.ExecutionDelay = int.TryParse(_txtDelay.Text, out n) ? n : 0;
             Settings.ListId = _txtListId.Text;
             Settings.GoogleUserName = _txtGmailEmail.Text;
-            Settings.GooglePassword = _txtGmailPassword.Text;
-            Settings.Headless = _chkHeadless.Checked;
-            Settings.ChromeProfileFolder = _txtChromeProfileFolder.Text;            
+            Settings.GooglePassword = _txtGmailPassword.Text;            
             Close();
         }
 
