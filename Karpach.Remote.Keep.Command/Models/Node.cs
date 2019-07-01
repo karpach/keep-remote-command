@@ -36,6 +36,9 @@ namespace Karpach.Remote.Keep.Command.Models
         [JsonProperty("parentId")]
         public string ParentId { get; set; }
 
+        [JsonProperty("parentServerId")]
+        public string ParentServerId { get; set; }        
+
         [JsonProperty("isArchived")]
         public bool IsArchived { get; set; }
 

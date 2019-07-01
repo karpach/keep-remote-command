@@ -147,6 +147,8 @@ namespace Karpach.Remote.Keep.Command
                 {
                     Text = item,
                     ParentId = parentNodeId,
+                    ParentServerId = newNodes[0].ServerId,
+
                     Type = "LIST_ITEM",
                     Timestamps = new Timestamps
                     {
